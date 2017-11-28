@@ -34,7 +34,7 @@ namespace Chatter
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
@@ -58,11 +58,15 @@ namespace Chatter
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            //app.UseGitHubAuthentication(
+            //    ClientID = "491ccac71fdcd19bfab9",
+            //    ClientSecret = "eed6d74b058ff7458b90a6d45e78b191251d8476");
+
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "1054943478616-26oks599depvgng84e1ld0cvvljjkeg7.apps.googleusercontent.com",
+                ClientSecret = "7X-Qaefw8cPDw52AWc6JN4Nd"
+            });
         }
     }
 }
