@@ -140,6 +140,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -222,7 +224,31 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Chat.cs">
+      <DependentUpon>ChatterDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChatterDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChatterDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChatterDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChatterDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChatterDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChatterDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Follower.cs">
+      <DependentUpon>ChatterDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Like.cs">
+      <DependentUpon>ChatterDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -247,7 +273,24 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <EntityDeploy Include="Models\ChatterDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ChatterDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ChatterDB.edmx.diagram">
+      <DependentUpon>ChatterDB.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Models\ChatterDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ChatterDB.edmx</DependentUpon>
+      <LastGenOutput>ChatterDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ChatterDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ChatterDB.edmx</DependentUpon>
+      <LastGenOutput>ChatterDB.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.2.1.js" />
@@ -308,6 +351,9 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

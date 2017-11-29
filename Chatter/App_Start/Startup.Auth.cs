@@ -58,12 +58,14 @@ namespace Chatter
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGitHubAuthentication(
-            //    ClientID = "491ccac71fdcd19bfab9",
-            //    ClientSecret = "eed6d74b058ff7458b90a6d45e78b191251d8476");
+            //try to add a github one:
 
-            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            {
+            //{
+            //    "GitHub: ClientId": "491ccac71fdcd19bfab9",
+            //    "GitHub: ClientSecret": "eed6d74b058ff7458b90a6d45e78b191251d8476"}
+
+                app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions() { 
+            
                 ClientId = "1054943478616-26oks599depvgng84e1ld0cvvljjkeg7.apps.googleusercontent.com",
                 ClientSecret = "7X-Qaefw8cPDw52AWc6JN4Nd"
             });
