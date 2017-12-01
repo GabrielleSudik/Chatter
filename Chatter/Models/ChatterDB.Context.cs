@@ -25,8 +25,13 @@ namespace Chatter.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Chat> Chats { get; set; }
         public virtual DbSet<Follower> Followers { get; set; }
         public virtual DbSet<Like> Likes { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Chat1> Chat1 { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<Chat11> Chat11 { get; set; }
     }
 }

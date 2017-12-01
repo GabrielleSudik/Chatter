@@ -12,11 +12,13 @@ namespace Chatter.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Chat
+    public partial class Chat1
     {
         public int ChatID { get; set; }
-        public string UserName { get; set; }
-        public string Message { get; set; }
-        public System.DateTime DateTime { get; set; }
+        public string UserID { get; set; }
+        public string ChatMessage { get; set; }
+        public System.DateTime DateTimeStamp { get; set; }
+    
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

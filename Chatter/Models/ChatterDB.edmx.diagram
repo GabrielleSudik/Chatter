@@ -4,10 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="772087e3796b480395dc9c16954b4b68" Name="Diagram1">
-        <EntityTypeShape EntityType="ChatterModel.Chat" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ChatterModel.Follower" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ChatterModel.Like" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+      <Diagram DiagramId="772087e3796b480395dc9c16954b4b68" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="ChatterModel.Follower" Width="1.5" PointX="8.875" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChatterModel.Like" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ChatterModel.AspNetUser" Width="1.5" PointX="3.125" PointY="0.875" />
+        <EntityTypeShape EntityType="ChatterModel.Chat1" Width="1.5" PointX="5.75" PointY="1.5" />
+        <AssociationConnector Association="ChatterModel.FK_Chat_AspNetUsers1" />
+        <EntityTypeShape EntityType="ChatterModel.AspNetRole" Width="1.5" PointX="0.875" PointY="4.25" />
+        <EntityTypeShape EntityType="ChatterModel.AspNetUserClaim" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="ChatterModel.AspNetUserLogin" Width="1.5" PointX="5.375" PointY="11.25" />
+        <EntityTypeShape EntityType="ChatterModel.Chat11" Width="1.5" PointX="5.375" PointY="8.5" />
+        <AssociationConnector Association="ChatterModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ChatterModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ChatterModel.FK_Chats_AspNetUsers" />
+        <AssociationConnector Association="ChatterModel.AspNetUserRoles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
