@@ -9,7 +9,74 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+
+@*NEW STUFF ADDED FOR CHATTER:*@
+
+<div id="response"></div> 
+
+<button id="getChats" class="btn btn-primary">Get Chats</button>
+
+@section Scripts {
+    <script>
+        //alert('hello world!');
+        //note: walkthrough had double "" but you need single ''
+
+        //JSON . . . Javascript object
+        var jsonTest = {
+            "firstName": "Bob",
+            "lastName": "Sauce",
+            "children":
+                [{ "firstName": "Barbie", "age": 19 },
+                    { "firstName": "Ron", "age": null }
+                ]
+        }
+        //now some jQuery
+        //this line came with tutorial, and works.
+        $("#response").text(jsonTest.children[1].firstName);
+
+        //the next one is my attempt to follow instructions, it doesn't work.
+        //$("#response").each(jsonTest.children).text(firstName);
+        //you just tried like 20 ways to make that work. no dice.
+        //I do seem to get an error about it in the console, tho! So that's nice.
+
+        //AJAX request using jQuery as a helper
+        //Notice this combines Razor syntax -Url.Action- in order to
+        //have the compiler figure out the exact path of the controller,
+        //alongside of jQuery.
+        @*$.get("@Url.Action("TestJson","Chats")", function (response) {
+            alert(response);
+        });*@
+        //that doesn't show an alert; instead the console says 404 error
+        //is that SUPPOSED to happen, just to learn something?
+        //after all, we don't have a TestJson in our Chats.
+        //I guess so... Next step is update with this:
+
+        $.get("@Url.Action("TestJson","Chats")", function (serverResponse) {
+            var jsonTest = JSON.parse(serverResponse);
+            console.log(jsonTest);
+            $("#response").text(jsonTest.firstName);
+        });
+        //except... nothing, again. :(
+        //just 404 error in the console.
+
+
+
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@*CODED OUT PER INSTRUCTIONS:*@
+@*<table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ChatMessage)
@@ -42,4 +109,4 @@
     </tr>
 }
 
-</table>
+</table>*@
