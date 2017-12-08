@@ -4,10 +4,12 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>List of All Chats</h2>
+<h3>Or it would be, except you deleted the table and inserted "Bob".</h3>
+<h5>I feel like I got the short end of that deal.</h5>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    But you can still @Html.ActionLink("Create New", "Create"). They go to the CHATS table in SQL.
 </p>
 
 @*NEW STUFF ADDED FOR CHATTER:*@
@@ -20,6 +22,13 @@
     <script>
         //alert('hello world!');
         //note: walkthrough had double "" but you need single ''
+        //then it worked
+
+        //JSON . . . Javascript object
+        //var jsonTest = { "ID": 1, "userID": 1, "Message": "Hello World" };
+        //now some jQuery
+        //$("#response").text(jsonTest.Message);
+        //that worked.
 
         //JSON . . . Javascript object
         var jsonTest = {
@@ -31,82 +40,66 @@
                 ]
         }
         //now some jQuery
-        //this line came with tutorial, and works.
-        $("#response").text(jsonTest.children[1].firstName);
+        //$("#response").text(jsonTest.children[1].firstName);
+        //this line came with tutorial, and works. Prints "Ron"
+
+        //$("#response").text(jsonTest.children[0].firstName);
+        //$("#response").text(jsonTest.children[1].age);
+        //each of those lines worked one at a time (age printed nothing because null)
 
         //the next one is my attempt to follow instructions, it doesn't work.
         //$("#response").each(jsonTest.children).text(firstName);
         //you just tried like 20 ways to make that work. no dice.
         //I do seem to get an error about it in the console, tho! So that's nice.
 
+        //here's Lily's code:
+        //var content = "";
+        //$(document).ready(function () {
+        //    $.each(jsonTest.children, function (index, element) {
+        //        content += "First Name: " + element.firstName + ", Age: " + element.age + "<br />";
+        //    });
+
+        //    $("#response").html(content);
+        //});
+        //probably could be simpler, although less clear. like the two firstNames only?
+
+        //var content = " ";
+        //$(document).ready(function () {
+        //    $.each(jsonTest.children, function (index, element) {
+        //        content+= element.firstName + " " + element.age + " ";
+        //    });
+
+        //    $("#response").html(content);
+        //});
+        //yeah. worked (basically same as Lily's without extra words)
+
         //AJAX request using jQuery as a helper
         //Notice this combines Razor syntax -Url.Action- in order to
         //have the compiler figure out the exact path of the controller,
         //alongside of jQuery.
-        @*$.get("@Url.Action("TestJson","Chats")", function (response) {
+
+        @*$.get("@Url.Action("TestJson","Chat1")", function (response) {
             alert(response);
         });*@
-        //that doesn't show an alert; instead the console says 404 error
-        //is that SUPPOSED to happen, just to learn something?
-        //after all, we don't have a TestJson in our Chats.
-        //I guess so... Next step is update with this:
 
-        $.get("@Url.Action("TestJson","Chats")", function (serverResponse) {
+        //after much gnashing of teeth, that worked (because you realized you had to put something in the CONTROLLER)
+        //note you had to remane Chats to Chat1, to match your tablename
+
+        $.get("@Url.Action("TestJson","Chat1")", function (serverResponse) {
             var jsonTest = JSON.parse(serverResponse);
             console.log(jsonTest);
             $("#response").text(jsonTest.firstName);
         });
-        //except... nothing, again. :(
-        //just 404 error in the console.
+
+        //again, this (FINALLY) worked, after adding code to controller
+        //and changing table name
+
+        //sadly, I don't understand it all. :(
+        //i do get that console.log line printed the string name jsonTest
+        //and text line printed Bob's first name to the window
+        //like, what is serverResponse? It's no where else in the solution.
 
 
 
     </script>
 }
-
-
-
-
-
-
-
-
-
-
-
-
-@*CODED OUT PER INSTRUCTIONS:*@
-@*<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ChatMessage)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateTimeStamp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChatMessage)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateTimeStamp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ChatID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ChatID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ChatID })
-        </td>
-    </tr>
-}
-
-</table>*@

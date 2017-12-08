@@ -21,6 +21,16 @@ namespace Chatter.Controllers
             return View(chat1.ToList());
         }
 
+        //NEW STUFF from Chatter instructions:
+        public JsonResult TestJson()
+        {
+            string jsonTest = "{ \"firstName\": \"Bob\", \"lastName\": \"Sauce\", \"children\": [{\"firstName\": \"Barbie\", \"age\": 19 }, {\"firstName\": \"Ron\", \"age\": null }] }";
+
+                return Json(jsonTest, JsonRequestBehavior.AllowGet);
+            }
+        //note you got a LOT of red squiggles when it was printed on multiple lines.
+        //not sure why but you removed breaks just to be safe.
+
         // GET: Chat1/Details/5
         public ActionResult Details(int? id)
         {
